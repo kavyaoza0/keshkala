@@ -5,7 +5,7 @@ import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
-    text: "The stylist Tejas is very professional and is very good at hairstyling and beard styling. Highly recommended.",
+    text: "Very professional service and excellent at hairstyling and beard styling. Highly recommended.",
     author: "Verified Customer",
     rating: 5,
   },
@@ -47,17 +47,30 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 30, rotateX: 15 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 * index }}
+              whileHover={{ scale: 1.03, y: -5 }}
               className="bg-primary-foreground/5 backdrop-blur-sm rounded p-8 relative"
             >
-              <Quote className="text-accent/30 absolute top-6 right-6" size={32} />
+              <motion.div
+                initial={{ rotate: 0 }}
+                whileHover={{ rotate: 12 }}
+              >
+                <Quote className="text-accent/30 absolute top-6 right-6" size={32} />
+              </motion.div>
               
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="text-accent fill-accent" />
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                    transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
+                  >
+                    <Star size={16} className="text-accent fill-accent" />
+                  </motion.div>
                 ))}
               </div>
 

@@ -64,19 +64,30 @@ const ServicesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * index }}
-              className="card-premium rounded p-6 text-center group"
+              whileHover={{ y: -10, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)" }}
+              className="card-premium rounded p-6 text-center group cursor-pointer"
             >
-              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-300">
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="w-16 h-16 mx-auto mb-5 rounded-full bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-300"
+              >
                 <service.icon size={28} className="text-accent" />
-              </div>
+              </motion.div>
               <h3 className="font-heading font-semibold text-lg text-foreground mb-4">
                 {service.category}
               </h3>
               <ul className="space-y-2">
-                {service.items.map((item) => (
-                  <li key={item} className="text-muted-foreground text-sm">
+                {service.items.map((item, i) => (
+                  <motion.li 
+                    key={item} 
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="text-muted-foreground text-sm"
+                  >
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
