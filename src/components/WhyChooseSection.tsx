@@ -11,8 +11,8 @@ const reasons = [
   },
   {
     icon: Star,
-    title: "Expert Stylist Tejas",
-    description: "Known for professional hair and beard styling with meticulous attention",
+    title: "Expert Stylists",
+    description: "Professional hair and beard styling with meticulous attention to detail",
   },
   {
     icon: Star,
@@ -60,11 +60,16 @@ const WhyChooseSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * index }}
+              whileHover={{ y: -8 }}
               className="text-center p-6 group"
             >
-              <div className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300">
+              <motion.div 
+                whileHover={{ scale: 1.15, rotate: 10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300"
+              >
                 <reason.icon size={24} className="text-accent" />
-              </div>
+              </motion.div>
               <h3 className="font-heading font-semibold text-lg text-foreground mb-3">
                 {reason.title}
               </h3>
@@ -82,11 +87,16 @@ const WhyChooseSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + 0.1 * index }}
+              whileHover={{ y: -8 }}
               className="text-center p-6 group"
             >
-              <div className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300">
+              <motion.div 
+                whileHover={{ scale: 1.15, rotate: -10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300"
+              >
                 <reason.icon size={24} className="text-accent" />
-              </div>
+              </motion.div>
               <h3 className="font-heading font-semibold text-lg text-foreground mb-3">
                 {reason.title}
               </h3>
