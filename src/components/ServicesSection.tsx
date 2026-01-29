@@ -70,6 +70,7 @@ const ServicesSection = () => {
                 z: 50,
                 boxShadow: "0 25px 50px -15px rgba(0,0,0,0.15)" 
               }}
+              whileTap={{ scale: 0.98, y: -5 }}
               className="card-premium rounded p-6 text-center group cursor-pointer"
               style={{ transformStyle: "preserve-3d" }}
             >

@@ -47,24 +47,30 @@ const AboutSection = () => {
 
             {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                { icon: Scissors, label: "Expert Stylists" },
-                { icon: Award, label: "Since 1952" },
-                { icon: Sparkles, label: "Premium Care" },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="flex flex-col items-center text-center p-4"
-                >
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-3">
-                    <item.icon size={20} className="text-accent" />
-                  </div>
-                  <span className="text-sm font-medium text-foreground">{item.label}</span>
-                </motion.div>
-              ))}
+                {[
+                  { icon: Scissors, label: "Expert Stylists" },
+                  { icon: Award, label: "Since 1952" },
+                  { icon: Sparkles, label: "Premium Care" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.15, type: "spring", stiffness: 150 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex flex-col items-center text-center p-4 cursor-pointer"
+                  >
+                    <motion.div 
+                      className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-3"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      whileTap={{ rotate: 180 }}
+                      transition={{ duration: 0.6, type: "spring" }}
+                    >
+                      <item.icon size={20} className="text-accent" />
+                    </motion.div>
+                    <span className="text-sm font-medium text-foreground">{item.label}</span>
+                  </motion.div>
+                ))}
             </div>
           </motion.div>
 
