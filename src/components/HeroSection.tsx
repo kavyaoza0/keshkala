@@ -18,45 +18,84 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30, rotateX: 15 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{ perspective: 1000 }}
         >
           {/* Decorative Line */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
             <span className="w-12 h-px bg-accent" />
-            <span className="text-accent text-sm tracking-[0.3em] uppercase font-body">
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-accent text-sm tracking-[0.3em] uppercase font-body"
+            >
               Est. 1952
-            </span>
+            </motion.span>
             <span className="w-12 h-px bg-accent" />
-          </div>
+          </motion.div>
 
-          {/* Business Name */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground mb-4 tracking-tight">
+          {/* Business Name with 3D effect */}
+          <motion.h1 
+            initial={{ opacity: 0, z: -100, rotateY: -15 }}
+            animate={{ opacity: 1, z: 0, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 100 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground mb-4 tracking-tight"
+            style={{ transformStyle: "preserve-3d" }}
+          >
             Kesh Kala
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 font-heading italic mb-2">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl md:text-2xl text-primary-foreground/90 font-heading italic mb-2"
+          >
             The Hair Studio
-          </p>
+          </motion.p>
 
           {/* Tagline */}
-          <p className="text-accent text-sm md:text-base tracking-[0.15em] uppercase mt-6 mb-8">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-accent text-sm md:text-base tracking-[0.15em] uppercase mt-6 mb-8"
+          >
             Premium Grooming & Expert Styling Since 1952
-          </p>
+          </motion.p>
 
           {/* Description */}
-          <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-body">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-primary-foreground/80 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-body"
+          >
             Where decades of heritage meet modern expertise. Experience 
             personalized grooming excellence in the heart of Ahmedabad.
-          </p>
+          </motion.p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* CTA Buttons with 3D hover */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
             <motion.a
               href="tel:+919825887046"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05, rotateY: 5, z: 20 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400 }}
               className="btn-gold px-8 py-4 rounded flex items-center gap-3 text-base"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <Phone size={18} />
               Book Your Appointment
@@ -65,29 +104,15 @@ const HeroSection = () => {
               href="https://maps.google.com/?q=Shop+No.+255,+Medical+Complex,+Near+Paras+Nagar,+Sola+Road,+Ahmedabad"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05, rotateY: -5, z: 20 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400 }}
               className="btn-outline-gold border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground px-8 py-4 rounded flex items-center gap-3 text-base"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <MapPin size={18} />
               Visit Us in Paras Nagar
             </motion.a>
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center pt-2"
-          >
-            <div className="w-1 h-2 bg-accent rounded-full" />
           </motion.div>
         </motion.div>
       </div>

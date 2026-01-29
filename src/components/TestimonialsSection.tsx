@@ -43,31 +43,40 @@ const TestimonialsSection = () => {
           <div className="w-16 h-0.5 bg-accent mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8" style={{ perspective: 1200 }}>
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30, rotateX: 15 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * index }}
-              whileHover={{ scale: 1.03, y: -5 }}
+              initial={{ opacity: 0, y: 50, rotateX: 25, rotateY: index === 1 ? 0 : (index === 0 ? 15 : -15), z: -100 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0, rotateY: 0, z: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 * index, type: "spring", stiffness: 80 }}
+              whileHover={{ 
+                scale: 1.05, 
+                y: -10, 
+                rotateY: index === 1 ? 0 : (index === 0 ? -8 : 8),
+                z: 50 
+              }}
               className="bg-primary-foreground/5 backdrop-blur-sm rounded p-8 relative"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <motion.div
-                initial={{ rotate: 0 }}
-                whileHover={{ rotate: 12 }}
+                initial={{ rotate: 0, scale: 1 }}
+                whileHover={{ rotate: 15, scale: 1.2 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <Quote className="text-accent/30 absolute top-6 right-6" size={32} />
               </motion.div>
               
-              {/* Stars */}
+              {/* Stars with 3D flip */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <motion.div
                     key={i}
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={isInView ? { scale: 1, rotate: 0 } : {}}
-                    transition={{ delay: 0.5 + i * 0.1, type: "spring" }}
+                    initial={{ scale: 0, rotateY: -180, z: -50 }}
+                    animate={isInView ? { scale: 1, rotateY: 0, z: 0 } : {}}
+                    transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 200 }}
+                    whileHover={{ rotateY: 180, scale: 1.3 }}
+                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <Star size={16} className="text-accent fill-accent" />
                   </motion.div>

@@ -57,19 +57,25 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" style={{ perspective: 1200 }}>
           {services.map((service, index) => (
             <motion.div
               key={service.category}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{ y: -10, boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)" }}
+              initial={{ opacity: 0, y: 50, rotateX: 25, z: -100 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0, z: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.15 * index, type: "spring", stiffness: 80 }}
+              whileHover={{ 
+                y: -15, 
+                rotateY: 8,
+                z: 50,
+                boxShadow: "0 25px 50px -15px rgba(0,0,0,0.15)" 
+              }}
               className="card-premium rounded p-6 text-center group cursor-pointer"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
+                whileHover={{ rotate: 360, scale: 1.2 }}
+                transition={{ duration: 0.8, type: "spring" }}
                 className="w-16 h-16 mx-auto mb-5 rounded-full bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors duration-300"
               >
                 <service.icon size={28} className="text-accent" />
@@ -81,9 +87,9 @@ const ServicesSection = () => {
                 {service.items.map((item, i) => (
                   <motion.li 
                     key={item} 
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.3 + i * 0.1 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.4 + i * 0.1, type: "spring" }}
                     className="text-muted-foreground text-sm"
                   >
                     {item}

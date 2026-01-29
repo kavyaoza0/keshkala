@@ -44,12 +44,20 @@ const ContactSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-3 gap-8 mb-12"
+          style={{ perspective: 1200 }}
         >
           {/* Address */}
-          <motion.div variants={itemVariants} className="text-center p-6">
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ y: -10, rotateY: 8, z: 30 }}
+            className="text-center p-6"
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <motion.div 
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={{ scale: 1.15, rotateY: 180, rotateZ: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
               className="w-16 h-16 mx-auto mb-5 rounded-full bg-accent/10 flex items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <MapPin size={24} className="text-accent" />
             </motion.div>
@@ -67,10 +75,17 @@ const ContactSection = () => {
           </motion.div>
 
           {/* Phone */}
-          <motion.div variants={itemVariants} className="text-center p-6">
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ y: -10, rotateY: -8, z: 30 }}
+            className="text-center p-6"
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <motion.div 
-              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileHover={{ scale: 1.15, rotateY: -180, rotateZ: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
               className="w-16 h-16 mx-auto mb-5 rounded-full bg-accent/10 flex items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <Phone size={24} className="text-accent" />
             </motion.div>
@@ -89,10 +104,17 @@ const ContactSection = () => {
           </motion.div>
 
           {/* Hours */}
-          <motion.div variants={itemVariants} className="text-center p-6">
+          <motion.div 
+            variants={itemVariants} 
+            whileHover={{ y: -10, rotateY: 8, z: 30 }}
+            className="text-center p-6"
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <motion.div 
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={{ scale: 1.15, rotateY: 180, rotateZ: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
               className="w-16 h-16 mx-auto mb-5 rounded-full bg-accent/10 flex items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <Clock size={24} className="text-accent" />
             </motion.div>
