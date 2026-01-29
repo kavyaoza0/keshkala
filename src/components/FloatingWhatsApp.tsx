@@ -9,26 +9,13 @@ const FloatingWhatsApp = () => {
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg"
+      transition={{ delay: 2, duration: 0.4, ease: "easeOut" }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-black/20"
       aria-label="Chat on WhatsApp"
     >
-      {/* Pulse ring animation */}
-      <motion.span
-        className="absolute inset-0 rounded-full bg-[#25D366]"
-        animate={{
-          scale: [1, 1.4, 1.4],
-          opacity: [0.5, 0, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeOut",
-        }}
-      />
-      <MessageCircle size={28} className="text-white relative z-10" />
+      <MessageCircle size={26} className="text-white" />
     </motion.a>
   );
 };
