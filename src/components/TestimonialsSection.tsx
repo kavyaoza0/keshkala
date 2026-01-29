@@ -56,6 +56,7 @@ const TestimonialsSection = () => {
                 rotateY: index === 1 ? 0 : (index === 0 ? -8 : 8),
                 z: 50 
               }}
+              whileTap={{ scale: 0.98 }}
               className="bg-primary-foreground/5 backdrop-blur-sm rounded p-8 relative"
               style={{ transformStyle: "preserve-3d" }}
             >

@@ -6,11 +6,15 @@ import WhyChooseSection from "@/components/WhyChooseSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <ScrollProgress />
       <Navbar />
+      <FloatingWhatsApp />
       
       {/* Hero */}
       <HeroSection />
