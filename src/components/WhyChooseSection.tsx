@@ -53,20 +53,22 @@ const WhyChooseSection = () => {
           <div className="gold-divider" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: 1000 }}>
           {reasons.slice(0, 3).map((reason, index) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{ y: -8 }}
+              initial={{ opacity: 0, y: 40, rotateY: -20, z: -80 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateY: 0, z: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15 * index, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -12, rotateY: 8, z: 30 }}
               className="text-center p-6 group"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <motion.div 
-                whileHover={{ scale: 1.15, rotate: 10 }}
+                whileHover={{ scale: 1.2, rotateZ: 15, rotateY: 180 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <reason.icon size={24} className="text-accent" />
               </motion.div>
@@ -80,20 +82,22 @@ const WhyChooseSection = () => {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-8 mt-8 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-8 mt-8 max-w-2xl mx-auto" style={{ perspective: 1000 }}>
           {reasons.slice(3).map((reason, index) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 + 0.1 * index }}
-              whileHover={{ y: -8 }}
+              initial={{ opacity: 0, y: 40, rotateY: 20, z: -80 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateY: 0, z: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.5 + 0.15 * index, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -12, rotateY: -8, z: 30 }}
               className="text-center p-6 group"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <motion.div 
-                whileHover={{ scale: 1.15, rotate: -10 }}
+                whileHover={{ scale: 1.2, rotateZ: -15, rotateY: -180 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="w-16 h-16 mx-auto mb-5 rounded-full border-2 border-accent/30 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-300"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <reason.icon size={24} className="text-accent" />
               </motion.div>
